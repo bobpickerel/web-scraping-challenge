@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mars Facts</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="jumbotron text-center">
+      <h1>Mission to Mars</h1>
+      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Latest Mars News</h2>
+          <h3>{{ mars_data.mars_news_title  }}</h3>
+          <h4>{{ mars_data.mars_news_desc }}</h4>
+        </div>
+      </div>  
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Featured Mars Image</h2>
+          <img src="{{ mars_data.featured_image_location }}" alt="featured_image">
+        </div>
+        <div class="col-md-4">
+          <h3>Mars Facts</h3>
+          <table border="1" class="dataframe">
+            <thead>
+              <tr style="text-align: right;">
+                <th>Mars - Earth Comparison</th>
+                <th>Mars</th>
+                <th>Earth</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Diameter:</td>
+                <td>6,779 km</td>
+                <td>12,742 km</td>
+              </tr>
+              <tr>
+                <td>Mass:</td>
+                <td>6.39 × 10^23 kg</td>
+                <td>5.97 × 10^24 kg</td>
+              </tr>
+              <tr>
+                <td>Moons:</td>
+                <td>2</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td>Distance from Sun:</td>
+                <td>227,943,824 km</td>
+                <td>149,598,262 km</td>
+              </tr>
+              <tr>
+                <td>Length of Year:</td>
+                <td>687 Earth days</td>
+                <td>365.24 days</td>
+              </tr>
+              <tr>
+                <td>Temperature:</td>
+                <td>-87 to -5 °C</td>
+                <td>-88 to 58°C</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Mars Hemispheres</h2>
+          <hr class="solid">
+        </div>
+
+        {% for hemisphere in mars_data.hemispheres %}
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <img src="{{hemisphere.img_url}}" alt="...">
+            <div class="caption">
+              <h3>{{hemisphere.title}}</h3>
+            </div>
+          </div>
+
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
